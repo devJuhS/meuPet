@@ -1,0 +1,51 @@
+git status                              #verificando estado de arquivos/ diretorio
+git add .                               #adicionar todos os arquivos / diretorio
+git add nome_do_arquivo.txt             #adicionar arquivo especifico
+git add nome_do_repositorio             #adicionar um diretorio especifico
+git add -f arquivo_no_gitignore.txt     #Adicionar um arquivo que esta listado no .gitignore (geral ou do repositório)
+
+--- COMITANDO ARQUIVOS/ DIRETORIO ----
+
+git commit -m  "nome_do_arquivo"   
+git commit nome_do_arquivo -m "mensagem que deseja por no commit"
+
+-- REMOVER ARQUIVOS --
+
+git rm meu_arquivo
+
+git rm -r diretorio                   #remove o diretorio 
+
+-- VISUALIZAR HISTORICO --
+
+git log
+
+-- Exibir os repositórios remotos --
+
+git remote
+
+git remote -v
+
+-- Vincular repositório local com um repositório remoto --
+
+git remote add origin git@github.com:leocomelli/curso-git.gi
+
+--Exibir informações dos repositórios remotos --
+
+git remote show origin
+
+
+***  Atualizar repositório local de acordo com o repositório remoto ***
+
+git pull       #Atualizar os arquivos no branch atual
+
+
+--Clonar um repositório remoto já existente--
+
+git clone git@github.com:leocomelli/curso-git.git
+
+
+O master é o branch principal do GIT portanto
+
+git branch nome-da-branch                  #Criando um novo branch
+git checkout nome-da-outra-branch          #Trocando para um branch existente
+git checkout master                        #Voltar para o branch principal (master)
