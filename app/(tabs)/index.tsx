@@ -1,121 +1,185 @@
-import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity} from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import React from 'react';
+import { View, Text, TextInput, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function HomeScreen() {
+export default function PetShopScreen () {
   return (
-
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      {/* logo principal */}
       <View style={styles.header}>
-        <Ionicons style={styles.icon} name="person-circle-outline" size={50} color="black" />
-        <Text style={styles.texto}>Bem Vindo!</Text>
-        <Image style={styles.logo} source={require('@/assets/images/logoMeuPet.png')}/>
+        <Text style={styles.welcomeText}>Bem vindo!</Text>
+        <Image source={require('@/assets/images/icon.png')} style={styles.logo} />
       </View>
 
-      <View style={styles.linha}></View>
+      {/* barra de pesquisa */}
+      <Text style={styles.questionText}>O que o seu pet precisa?</Text>
+      <TextInput style={styles.searchInput} placeholder="Busque aqui..."/>
 
-      <View style={styles.busca}>
-        <Text style={styles.textoBusca}>O que o seu pet precisa?</Text>
-        <TextInput 
-        style={styles.caixaBusca}
-        placeholder='Busque aqui...'
-        placeholderTextColor="#8A8A8A"/>
+      {/* categorias */}
+      <View style={styles.categoryContainer}> 
+        <TouchableOpacity style={styles.categoryButton}> 
+          <Text style={styles.categoryText}>Cachorros</Text>
+          <Image source={require('@/assets/images/ic1.png')} style={styles.categoryIcon}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.categoryButton}>
+          <Text style={styles.categoryText}>Gatos</Text>
+          <Image source={require('@/assets/images/ic2.png')} style={styles.categoryIcon}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.categoryButton}>
+          <Text style={styles.categoryText}>Outros Pets</Text>
+          <Image source={require('@/assets/images/ic3.png')} style={styles.categoryIcon}/>
+        </TouchableOpacity>
       </View>
 
-      <View style={styles.cards}>
-        <TouchableOpacity style={styles.card}>
-          <Text>Cachorros</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Text>Gatos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
-          <Text>Outros Pets</Text>
-        </TouchableOpacity>
-
+      {/* Banner */}
+      <View style={styles.bannerContainer}>
+        <Image source={require('@/assets/images/b1.png')} style={styles.bannerImage} />
+        <Image source={require('@/assets/images/b2.jpg')} style={styles.bannerImage} />
       </View>
 
-    </View>
+      {/* Items Comprados*/}
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>Comprados</Text>
+        <Text style={styles.sectionSubtitle}>Vistos recentemente</Text>
+      </View>
+
+      {/* Lista de produtos*/}
+      <View style={styles.productContainer}>
+        <View style={styles.productCard}>
+          <Image source={{ uri: 'https://m.media-amazon.com/images/I/81+5+4wTfYL._AC_UF1000,1000_QL80_.jpg' }} style={styles.productImage} />
+          <Text style={styles.productName}>Ração Carne E Vegetais...</Text>
+          <Text style={styles.productPrice}>R$ 151,00</Text>
+        </View>
+        <View style={styles.productCard}>
+          <Image source={{ uri: 'https://a-static.mlcdn.com.br/450x450/pote-de-racao-15kg-e-agua-2l-automatico-cachorro-e-gato-rosa-plasutil/flixmobile/14736-522/e303a7052008ea150be30e8892130f50.jpeg' }} style={styles.productImage} />
+          <Text style={styles.productName}>Compartimento Pote para...</Text>
+          <Text style={styles.productPrice}>R$ 111,34</Text>
+        </View>
+        <View style={styles.productCard}>
+          <Image source={{ uri: 'https://http2.mlstatic.com/D_NQ_NP_855819-MLB50987113367_082022-O.webp' }} style={styles.productImage} />
+          <Text style={styles.productName}>Coleira para Gatos com...</Text>
+          <Text style={styles.productPrice}>R$ 31,00</Text>
+        </View>
+      </View>
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#FFF',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  welcomeText: {
+    fontSize: 24,
+    marginTop: 40,
+    fontWeight: 'bold',
+  },
+  logo: {
+    width: 50,
+    height: 50,
+    marginTop: 30,
+    marginLeft: 'auto',
+  },
+  questionText: {
+    fontSize: 16,
+    marginVertical: 8,
+  },
+  searchInput: {
+    height: 40,
+    borderColor: '#f18000',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginBottom: 16,
+  },
+  categoryContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 16,
+  },
+  categoryButton: {
+    width: '28%',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 5,
+    borderRadius: 8,
+    elevation: 2,
 
-    container:{
-      flex: 1,
-      backgroundColor: '#FFFFFF',
-    },
+    shadowColor: '#000', // Cor da sombra
+    shadowOffset: { width: 2, height: 4 }, // Deslocamento da sombra
+    shadowOpacity: 0.2, // Opacidade da sombra
+    shadowRadius: 3,    // Raio da sombra
+  },
+  categoryText: {
+    fontSize: 16,    
+  },
+  categoryIcon: {
+    width: 40,
+    height: 40,
+  },
 
-    header:{
-      flexDirection: 'row',
-    },
 
-    icon:{
-      marginTop: 10,
-      marginLeft: 10, 
-    },
-
-    texto:{
-      fontSize: 25,
-      marginTop: 20,
-      marginRight: 130,
-      marginLeft: 0,
-      fontWeight: 'bold',
-    },
-
-    logo:{
-      marginTop: 10,
-      marginRight: 10,
-      width: 50,
-      height: 50,
-    },
-
-    linha:{
-      height: 2,
-      width: '95%',
-      backgroundColor: '#F18000',
-      marginTop: 5,
-      marginLeft: 10,
-    },
-
-    busca:{
-      marginTop: 20,
-    },
-
-    textoBusca:{
-      fontSize: 15,
-      fontWeight: 'bold',
-      marginLeft: 20,
-    },
-
-    caixaBusca:{
-      marginTop: 10,
-      height: 40,
-      margin: 15,
-      padding: 10,
-      borderRadius: 10,
-      borderWidth: 2,
-      borderColor: '#F18000',
-    },
-
-    cards:{
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      margin: 20,
-    },
-
-    card:{
-      width: 90,
-      height: 70,
-      borderWidth: 1,
-      borderRadius: 20,
-      borderColor: '#C4C4C4',
-      justifyContent: 'center',
-      alignItems: 'center',
-      shadowColor: 'black',
-      shadowOpacity: 0.3,
-      shadowOffset: {width: -2, height: 4},
-      shadowRadius: 10,
-
-    },
-
+  bannerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  bannerImage: {
+    width: 300,
+    height: 320,
+    marginRight: 10,
+    borderRadius: 8,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 16,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  sectionSubtitle: {
+    fontSize: 14,
+    color: '#777',
+  },
+  productContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  productCard: {
+    width: '30%',
+    backgroundColor: '#fff',
+    borderColor: '#f18000',
+    borderWidth: 1,
+    borderRadius: 8,
+    elevation: 2,
+    padding: 8,
+    alignItems: 'center',
+    
+  },
+  productImage: {
+    width: '100%',
+    height: 100,
+    borderRadius: 8,
+  },
+  productName: {
+    fontSize: 14,
+    marginTop: 8,
+    textAlign: 'center',
+  },
+  productPrice: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#FFA500',
+    marginTop: 4,
+  },
 });
+
