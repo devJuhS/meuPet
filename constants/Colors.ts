@@ -4,7 +4,7 @@
  */
 
 const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorDark = '#fff';  /**botão quando selecionado na barra de menu */
 
 export const Colors = {
   light: {
