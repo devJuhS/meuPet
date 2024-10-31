@@ -1,70 +1,121 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Ionicons style={styles.icon} name="person-circle-outline" size={50} color="black" />
+        <Text style={styles.texto}>Bem Vindo!</Text>
+        <Image style={styles.logo} source={require('@/assets/images/logoMeuPet.png')}/>
+      </View>
+
+      <View style={styles.linha}></View>
+
+      <View style={styles.busca}>
+        <Text style={styles.textoBusca}>O que o seu pet precisa?</Text>
+        <TextInput 
+        style={styles.caixaBusca}
+        placeholder='Busque aqui...'
+        placeholderTextColor="#8A8A8A"/>
+      </View>
+
+      <View style={styles.cards}>
+        <TouchableOpacity style={styles.card}>
+          <Text>Cachorros</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+          <Text>Gatos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+          <Text>Outros Pets</Text>
+        </TouchableOpacity>
+
+      </View>
+
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+
+    container:{
+      flex: 1,
+      backgroundColor: '#FFFFFF',
+    },
+
+    header:{
+      flexDirection: 'row',
+    },
+
+    icon:{
+      marginTop: 10,
+      marginLeft: 10, 
+    },
+
+    texto:{
+      fontSize: 25,
+      marginTop: 20,
+      marginRight: 130,
+      marginLeft: 0,
+      fontWeight: 'bold',
+    },
+
+    logo:{
+      marginTop: 10,
+      marginRight: 10,
+      width: 50,
+      height: 50,
+    },
+
+    linha:{
+      height: 2,
+      width: '95%',
+      backgroundColor: '#F18000',
+      marginTop: 5,
+      marginLeft: 10,
+    },
+
+    busca:{
+      marginTop: 20,
+    },
+
+    textoBusca:{
+      fontSize: 15,
+      fontWeight: 'bold',
+      marginLeft: 20,
+    },
+
+    caixaBusca:{
+      marginTop: 10,
+      height: 40,
+      margin: 15,
+      padding: 10,
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: '#F18000',
+    },
+
+    cards:{
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      margin: 20,
+    },
+
+    card:{
+      width: 90,
+      height: 70,
+      borderWidth: 1,
+      borderRadius: 20,
+      borderColor: '#C4C4C4',
+      justifyContent: 'center',
+      alignItems: 'center',
+      shadowColor: 'black',
+      shadowOpacity: 0.3,
+      shadowOffset: {width: -2, height: 4},
+      shadowRadius: 10,
+
+    },
+
 });
