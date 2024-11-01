@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import { useNavigation, Link, router } from 'expo-router';
 
 export default function LoginScreen() {
+    const navigation = useNavigation();
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [tel, setTel] = useState('')
     const [senha, setSenha] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+
+    const ButtonAlert = () =>
+        Alert.alert('Conta Criada com Sucesso!','', [
+          {
+            text: 'Ok',
+            onPress: () => router.push('/LoginScreen'),
+            style: 'default'
+          },
+
+        ]);
+
+    useEffect(() => {
+        navigation.setOptions({ headerShown: false });
+      }, [navigation]);
 
 return (
 
@@ -67,14 +83,16 @@ return (
             </View>
 
             {/* Botão Cadastrar */}
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={ButtonAlert}>
                 <Text style={styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
 
             {/* Criar Conta */}
-            <TouchableOpacity>
-                <Text style={styles.createAccount}>Já tenho uma Conta!</Text>
-            </TouchableOpacity>
+            <Link href="/">
+                <TouchableOpacity>
+                    <Text style={styles.createAccount}>Já tenho uma Conta!</Text>
+                </TouchableOpacity>
+            </Link>
         </View>
     </View>
 );
@@ -122,6 +140,7 @@ passwordContainer: {
 eyeButton: {
     position: 'absolute',
     right: 15,
+    top: 11,
 },
 eyeIcon: {
     fontSize: 20,

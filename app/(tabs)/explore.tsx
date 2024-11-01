@@ -13,6 +13,7 @@ export default function BuscaScreen() {
       <View style={styles.linha}></View>
 
       <View style={styles.busca}>
+      <Text style={styles.questionText}>O que o seu pet precisa?</Text>
         <TextInput 
         style={styles.caixaBusca}
         placeholder='Busque aqui...'
@@ -34,21 +35,20 @@ export default function BuscaScreen() {
       <View style={styles.cards}>
         <TouchableOpacity style={styles.card}>
           <Image source={require('@/assets/images/golden1.png')}/>
-          <Text>Ração Golden Special para Gatos Adultos Sabor Frango e Carne</Text>
+          <Text style={styles.textcard}>Ração Golden Special para Gatos Adultos Sabor Frango e Carne</Text>
           <Text style={styles.preco}>149,90</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.card}>
           <Image source={require('@/assets/images/golden2.png')}/>
-          <Text>Ração Golden Special para Cães Adultos Sabor Frango e Carne</Text>
+          <Text style={styles.textcard}>Ração Golden Special para Cães Adultos Sabor Frango e Carne</Text>
           <Text style={styles.preco}>149,90</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.card}>
           <Image source={require('@/assets/images/golden3.png')}/>
-          <Text>Ração Golden para Gatos Castrados Sabor Frango</Text>
+          <Text style={styles.textcard}>Ração Golden para Gatos Castrados Sabor Frango</Text>
           <Text style={styles.preco}>153,49</Text>
         </TouchableOpacity>
       </View>
-
     </View>
   );
 }
@@ -64,16 +64,6 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
     },
 
-    botaoVoltar:{
-      height: 50,
-      width: 70,
-    },
-
-    voltar:{
-      marginLeft: 20,
-      marginTop: 10,
-    },
-
     textHeader:{
       marginLeft: 20,
       marginTop: 5,
@@ -86,6 +76,11 @@ const styles = StyleSheet.create({
       width: '100%',
       backgroundColor: '#F18000',
       marginTop: 5,
+    },
+
+    questionText:{
+      fontSize: 16,
+      marginLeft: 20,
     },
 
     busca:{
@@ -144,13 +139,17 @@ const styles = StyleSheet.create({
       paddingTop: 15,
       borderWidth: 1,
       borderRadius: 20,
-      borderColor: '#C4C4C4',
+      borderColor: '#f18000',
       justifyContent: 'space-between',
       alignItems: 'center',
       shadowColor: 'black',
       shadowOpacity: 0.3,
       shadowOffset: {width: -2, height: 4},
       shadowRadius: 10,
+    },
+
+    textcard:{
+      marginHorizontal: 10,
     },
 
     preco:{

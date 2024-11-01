@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TextInput, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from 'expo-router';
+
+
+
 
 export default function PetShopScreen () {
+    const navigation = useNavigation();
+    
+    useEffect(() => {
+        navigation.setOptions({ headerShown: false });
+      }, [navigation]);
+
   return (
     <ScrollView style={styles.container}>
       {/* logo principal */}
@@ -11,7 +21,6 @@ export default function PetShopScreen () {
       </View>
 
       {/* barra de pesquisa */}
-      <Text style={styles.questionText}>O que o seu pet precisa?</Text>
       <TextInput style={styles.searchInput} placeholder="Busque aqui..."/>
 
       {/* categorias */}
@@ -67,28 +76,27 @@ export default function PetShopScreen () {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     backgroundColor: '#FFF',
+    paddingHorizontal: 16,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 10,
   },
   welcomeText: {
-    fontSize: 24,
-    marginTop: 40,
+    fontSize: 25,
     fontWeight: 'bold',
   },
   logo: {
     width: 50,
     height: 50,
-    marginTop: 30,
     marginLeft: 'auto',
   },
   questionText: {
     fontSize: 16,
     marginVertical: 8,
+    marginLeft: 5,
   },
   searchInput: {
     height: 40,
@@ -182,4 +190,3 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 });
-

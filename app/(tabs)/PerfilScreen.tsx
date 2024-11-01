@@ -1,13 +1,16 @@
+import React from 'react';
 import { View, StyleSheet, Text, Image,  TouchableOpacity} from 'react-native';
 import {Link} from 'expo-router';
 
 export default function PerfilScreen(){
     return(
         <View style={styles.container}>
+
+            <Text style={styles.title}>Perfil</Text>
+
             
             <View style={styles.infoContainer}>
 
-                <Text style={styles.title}>Perfil</Text>
 
                 <Image style={styles.fotoPerfil} source={require('@/assets/images/foto-perfil.jpeg')}/>
                 
@@ -55,7 +58,7 @@ export default function PerfilScreen(){
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#430069'
+        backgroundColor: '#ffffff'
     },
 
     infoContainer:{
@@ -66,11 +69,18 @@ const styles = StyleSheet.create({
         margin: 20,
         borderRadius: 15,
 
+        shadowColor: '#000', // Cor da sombra
+        shadowOffset: { width: 4, height: 6 }, // Deslocamento da sombra
+        shadowOpacity: 0.4, // Opacidade da sombra
+        shadowRadius: 20,    // Raio da sombra
+
     },
 
     title:{
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 'bold',
+        marginLeft: 20,
+        marginTop: 5,
 
     },
 
