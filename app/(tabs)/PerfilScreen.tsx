@@ -43,7 +43,7 @@ export default function PerfilScreen(){
                 </View>
 
                 <View>
-                    <Link href="/(tabs)/explore">
+                    <Link href="/PetScreen">
                         <TouchableOpacity style={styles.botao}>
                             <Text style={styles.textBotao}>Meus Pets</Text>
                         </TouchableOpacity>

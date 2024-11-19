@@ -20,9 +20,6 @@ export default function PetShopScreen () {
         <Image source={require('@/assets/images/icon.png')} style={styles.logo} />
       </View>
 
-      {/* barra de pesquisa */}
-      <TextInput style={styles.searchInput} placeholder="Busque aqui..."/>
-
       {/* categorias */}
       <View style={styles.categoryContainer}> 
         <TouchableOpacity style={styles.categoryButton}> 
@@ -97,14 +94,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 8,
     marginLeft: 5,
-  },
-  searchInput: {
-    height: 40,
-    borderColor: '#f18000',
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 8,
-    marginBottom: 16,
   },
   categoryContainer: {
     flexDirection: 'row',
