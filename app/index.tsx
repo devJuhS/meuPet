@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation, Link } from 'expo-router';
+import { getUser } from '@/src/api';
 
 export default function LoginScreen() {
   const navigation = useNavigation();

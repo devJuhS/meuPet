@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { createPets } from '@/src/api';
 
 export default function AddPetScreen() {
   const navigation = useNavigation();
