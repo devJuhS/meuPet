@@ -1,5 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import { getProdutos } from '@/src/api';
 
 
 export default function BuscaScreen() {
