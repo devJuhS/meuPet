@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import { useNavigation, Link, router } from 'expo-router';
-import { createUser} from '@/src/api';
+import { createUser } from '@/src/api';
 
 export default function LoginScreen() {
     const navigation = useNavigation();
     const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
-    const [tel, setTel] = useState('')
+    const [tel, setTel] = useState('');
+    const [genero, setGenero] = useState('');
+    const [dtNasc, setDtNasc] = useState('');
     const [senha, setSenha] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
@@ -15,7 +18,7 @@ export default function LoginScreen() {
         Alert.alert('Conta Criada com Sucesso!','', [
           {
             text: 'Ok',
-            onPress: () => router.push('/LoginScreen'),
+            onPress: () => navigation.navigate('LoginScreen'),
             style: 'default'
           },
 
@@ -24,6 +27,9 @@ export default function LoginScreen() {
     useEffect(() => {
         navigation.setOptions({ headerShown: false });
       }, [navigation]);
+
+
+
 
 return (
 
@@ -46,6 +52,16 @@ return (
             onChangeText={setNome}
         />
 
+         {/* CPF Input */}
+         <TextInput
+            style={styles.input}
+            placeholder="CPF"
+            placeholderTextColor="#8A8A8A"
+            value={cpf}
+            onChangeText={setCpf}
+        />
+
+
         {/* Email Input */}
         <TextInput
             style={styles.input}
@@ -63,6 +79,28 @@ return (
             value={tel}
             onChangeText={setTel}
         />
+
+
+        {/* Gênero */}
+        <TextInput
+        style={styles.input}
+        placeholder="Gênero"
+        placeholderTextColor="#8A8A8A"
+        value={genero}
+        onChangeText={setGenero}
+        />
+
+
+
+        {/* Data de Nascimento */}
+        <TextInput
+        style={styles.input}
+        placeholder="Data de Nascimento"
+        placeholderTextColor="#8A8A8A"
+        value={dtNasc}
+        onChangeText={setDtNasc}
+        />
+
 
         {/* Senha Input */}
         <View style={styles.passwordContainer}>

@@ -17,6 +17,8 @@ export const createUser = async (userData: any, config ={}) =>{
       throw error;
     }
     };
+
+    
     // Função para buscar usuário
     export const getUser = async (userData: any, config ={}) => {
       try {
@@ -31,23 +33,21 @@ export const createUser = async (userData: any, config ={}) =>{
       }
     };
     
-    
-    const userData = {
-      nome:'',
-      cpf:'',
-      cel:'',
-      tel:'',
-      email:'',
-      genero:'',
-      data_nascimento: ''
-    };
-    
+    const userData= {
+        nome:'',
+        cpf:'',
+        cel:'',
+        tel:'',
+        email:'',
+        genero:'',
+        dtNasc:''
+        };
     
     
     //função para criar pets
-    export const createPets = async (petData: any, config ={}) =>{
+    export const createPet = async (petData: any, config ={}) =>{
       try{
-        const response = await api.post('/pets', petData);
+        const response = await api.post('/pet', petData);
       return response.data;
       } catch(error){
         console.error("Erro ao cadastrar pet:", error);
@@ -68,56 +68,49 @@ export const createUser = async (userData: any, config ={}) =>{
         throw error; 
       }
     };
-    
-    
+
+
     
     const petData = {
-        nome: '',
-        sexo: '',
-        castracao: '',
-        raca: '',
-        peso: '',
-    };
-    
-    
-    
-    
-    
-    
-    
+        name: '',
+        color: '',
+        species: '',
+        breed: '',
+        gender: '',
+        birthDate: '',
+        weight: ''
+        };
+
+
+
     //função para inserir produtos
     export const postProdutos = async (produtosData: any, config ={}) =>{
-      try{
-        const response = await api.post('/produtos', produtosData);
-      return response.data;
-      } catch(error){
-        console.error("Erro ao cadastrar produto:", error);
-        throw error;
-      }};
-    
-    
-    // Função para buscar produto
-    export const getProdutos = async (produtosData: any, config ={}) => {
-      try {
-        const response = await api.get(`/produtos`,  {
-          params: produtosData,
-          ...config
-        });
+        try{
+          const response = await api.post('/produtos', produtosData);
         return response.data;
-      } catch (error) {
-        console.error("Erro ao buscar produto:", error);
-        throw error; 
-      }
-    };
-    
-    
+        } catch(error){
+          console.error("Erro ao cadastrar produto:", error);
+          throw error;
+        }};
+
+
+
+    // Função para buscar produto pelo nome
+    export const getProdutos = async (produtosData: any, config = {}) => {
+        try {
+          const response = await api.get(`/produto`, {
+            params: { nome: produtosData.nomeProduto },
+            ...config
+          });
+          return response.data;
+        } catch (error) {
+          console.error("Erro ao buscar produto:", error);
+          throw error;
+        }
+      };
+
     
     const produtosData = {
-        nome: '',
-        descricao: '',
-        preco: '',
-        quantidade_estoque: '',
-        categoria_produto: '',
-        data_adicao: ''
-    };
-
+        nomeProduto:'',
+        preco_produto:''
+        };
