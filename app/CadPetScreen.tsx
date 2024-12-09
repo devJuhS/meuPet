@@ -20,7 +20,7 @@ export default function AddPetScreen() {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
 
-  const handleSave = () => {
+    const handleSave = ({createPet}) => {
     // Salve o novo pet (você pode enviar para o backend ou atualizar o estado do HomeScreen).
     navigation.goBack();
   };
