@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
-import { useNavigation, Link, router } from 'expo-router';
-import { createUser } from '@/src/api';
+import { useRouter } from 'expo-router'; // Use o useRouter do expo-router para navegação
+import { createUser } from '@/src/api'; // Seu método de API, se necessário
 
-export default function LoginScreen() {
-    const navigation = useNavigation();
+export default function SignUpScreen() {
+    const router = useRouter();  // Hook de navegação do expo-router
     const [nome, setNome] = useState('');
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
@@ -15,21 +15,17 @@ export default function LoginScreen() {
     const [showPassword, setShowPassword] = useState(false);
 
     const ButtonAlert = () =>
-        Alert.alert('Conta Criada com Sucesso!','', [
-          {
-            text: 'Ok',
-            onPress: () => navigation.navigate('LoginScreen'),
-            style: 'default'
-          },
-
+        Alert.alert('Conta Criada com Sucesso!', '', [
+            {
+                text: 'Ok',
+                onPress: () => router.push('/PerfilScreen'), // Usando router.push() do expo-router
+                style: 'default'
+            },
         ]);
 
     useEffect(() => {
-        navigation.setOptions({ headerShown: false });
-      }, [navigation]);
-
-
-
+        // Nenhuma necessidade de setOptions com expo-router, já que ele lida com o cabeçalho automaticamente
+    }, []);
 
 return (
 
@@ -127,15 +123,14 @@ return (
             </TouchableOpacity>
 
             {/* Criar Conta */}
-            <Link href="/">
-                <TouchableOpacity>
+            <TouchableOpacity onPress={() => router.push('/PerfilScreen')}> {/* Navegar para Login */}
                     <Text style={styles.createAccount}>Já tenho uma Conta!</Text>
                 </TouchableOpacity>
-            </Link>
+            </View>
         </View>
-    </View>
-);
+    );
 }
+
 
 const styles = StyleSheet.create({
 container: {
